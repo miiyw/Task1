@@ -3,7 +3,7 @@ package calculator;
 import java.util.*;
 
 public class Calculator {
-    private List<Integer> resultList = new ArrayList<>(); // 연산 결과를 저장하는 리스트 생성
+    List<Integer> resultList = new ArrayList<>(); // 연산 결과를 저장하는 리스트 생성
 
     public int calculate(int num1, int num2, char operator) throws DivideByZeroException, InvalidOperatorException {
         int result; // 결과 저장용 변수 선언
