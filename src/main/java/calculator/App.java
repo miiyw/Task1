@@ -6,6 +6,9 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        int[] arr = new int[10]; // 연산의 결과를 저장할 배열 생성
+        int index = 0; // 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수 선언
+
         while(true){
             System.out.print("첫 번째 숫자를 입력하세요: ");
             int num1 = sc.nextInt(); //Scanner를 사용하여 양의 정수를 입력받고 변수에 저장
@@ -42,12 +45,27 @@ public class App {
 
             System.out.println("결과: " + result);
 
+            // 결과 저장
+            if (index >= arr.length) { // 배열 초과 시
+                System.out.println("결과 저장 공간이 전부 찼습니다."); // 해당 안내문 출력
+            }
+            else {
+                arr[index] = result; // 연산의 결과를 배열에 저장
+                index++; // index 증가하여 다음 index에 값이 저장될 수 있도록 함
+            }
+
             // 반복 여부 확인
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String input = sc.next();
             if (input.trim().equals("exit")) { // 입력값이 "exit"면 반복 종료
                 break;
             }
+        }
+
+        // 저장된 배열 출력
+        System.out.print("배열 저장 결과: ");
+        for (int i = 0; i < index; i++) {
+            System.out.print(arr[i] + " ");
         }
     }
 }
