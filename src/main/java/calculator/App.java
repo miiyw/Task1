@@ -19,7 +19,7 @@ public class App {
             char operator = sc.next().charAt(0); // 사칙 연산 기호를 적합한 타입으로 선언한 변수에 저장
             // charAt(0): 문자열의 0번째 위치에 있는 문자(첫 글자) 반환
 
-            int result = 0; // 결과 저장용 변수 초기화
+            int result; // 결과 저장용 변수 선언
             // 입력된 연산 기호에 따라 연산 수행
             switch (operator) {
                 case '+': // 덧셈 연산
@@ -46,12 +46,15 @@ public class App {
             System.out.println("결과: " + result);
 
             // 결과 저장
-            if (index >= arr.length) { // 배열 초과 시
-                System.out.println("결과 저장 공간이 전부 찼습니다."); // 해당 안내문 출력
-            }
-            else {
+            if (index < arr.length) { // 배열에 저장된 값이 10개 미만이면
                 arr[index] = result; // 연산의 결과를 배열에 저장
                 index++; // index 증가하여 다음 index에 값이 저장될 수 있도록 함
+            } else { // 10개 초과일 경우
+                // 가장 앞 요소 제거, 한 칸씩 앞으로 밀기
+                for (int i = 0; i < arr.length - 1; i++) {
+                    arr[i] = arr[i + 1];
+                }
+                arr[arr.length - 1] = result; // 마지막에 가장 최근의 결과 저장
             }
 
             // 반복 여부 확인
