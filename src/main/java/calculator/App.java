@@ -10,11 +10,23 @@ public class App {
 
         while(true){
             try {
-                System.out.print("첫 번째 숫자를 입력하세요: ");
-                int num1 = sc.nextInt();
+                int num1;
 
-                System.out.print("두 번째 숫자를 입력하세요: ");
-                int num2 = sc.nextInt();
+                // ‼️양의 정수를 입력받으라는 조건을 지금 확인하여 해당 조건 추가함
+                while (true) {
+                    System.out.print("첫 번째 숫자를 입력하세요: ");
+                    num1 = sc.nextInt();
+                    if (num1 >= 0) break; // 양수만 입력받기 위한 조건
+                    System.out.println("음수는 입력할 수 없습니다.");
+                }
+
+                int num2;
+                while (true) {
+                    System.out.print("두 번째 숫자를 입력하세요: ");
+                    num2 = sc.nextInt();
+                    if (num2 >= 0) break; // 양수만 입력받기 위한 조건
+                    System.out.println("음수는 입력할 수 없습니다.");
+                }
 
                 System.out.print("사칙 연산 기호를 입력하세요: ");
                 char operator = sc.next().charAt(0);
@@ -22,9 +34,20 @@ public class App {
                 int result = calc.calculate(num1, num2, operator);
                 System.out.println("결과: " + result + "\n");
 
+                // Getter 메서드 활용 - 연산 저장 결과 확인
+                System.out.println("연산 저장 결과: " + calc.getResultList() + "\n");
+
             } catch (DivideByZeroException | InvalidOperatorException e) { // 콘솔에 예외 처리 메시지 출력할 수 있도록 처리
                 System.out.println("! 예외 발생: " + e.getMessage() + "\n");
                 continue; // 예외 발생 시 처음으로 다시 입력받기
+            }
+
+            // Setter 활용 - 리스트 초기화 여부 확인
+            System.out.println("연산 결과가 저장된 리스트를 초기화하시겠습니까? (reset 입력 시 초기화)");
+            String input_reset = sc.next();
+            if (input_reset.trim().equals("reset")) {
+                calc.setResultList(new  ArrayList<>());
+                System.out.println("리스트가 초기화되었습니다." + calc.getResultList() + "\n");
             }
 
             // 반복 여부 확인
