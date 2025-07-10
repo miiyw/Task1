@@ -42,14 +42,10 @@ public class App {
                     continue; // 연산을 수행하지 않고 반복문의 처음으로 돌아감
             }
 
-            System.out.println("결과: " + result);
+            System.out.println("결과: " + result + "\n");
 
             // 결과 저장
             resultList.add(result);
-
-            // 저장된 결과 출력
-            System.out.print("\n현재까지의 결과: ");
-            System.out.println(resultList + "\n");
 
             // 연산 결과 삭제 여부 확인
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
@@ -57,19 +53,31 @@ public class App {
             if (input_remove.trim().equals("remove")) { // 입력값이 "remove"면 가장 먼저 저장된 연산 결과 삭제
                 if (!resultList.isEmpty()) {
                     resultList.remove(0);
-                    System.out.println("삭제 후 현재 저장된 결과: " + resultList);
+                    System.out.println("삭제 후 현재 저장된 결과: " + resultList + "\n");
                 }
                 else { // 만약 리스트에 연산 결과가 없다면
                     System.out.println("리스트가 비어 있습니다."); // 안내문 출력
                 }
             }
 
+            // 저장된 연산 결과 전부 출력
+            System.out.println("저장된 연산 결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String input_result = sc.next();
+            if (input_result.trim().equals("inquiry")) {
+                System.out.print("저장된 연산 결과: ");
+                for (int number : resultList) { // 향상된 for문 사용하여 연산 결과 출력
+                    System.out.print(number + " ");
+                }
+                System.out.println();
+            }
+
             // 반복 여부 확인
-            System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)");
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String input_continue = sc.next();
             if (input_continue.trim().equals("exit")) { // 입력값이 "exit"면 반복 종료
                 break;
             }
+            System.out.println();
         }
 
         // 저장된 결과 출력
