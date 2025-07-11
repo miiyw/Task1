@@ -1,9 +1,20 @@
 package calculator;
 
 public class ArithmeticCalculator extends Calculator {
+    // 연산자 객체 생성
+    // final 이용하여 불변성 보장
+    private final AddOperator add;
+    private final SubtractOperator sub;
+    private final MultiplyOperator mul;
+    private final DivideOperator div;
+
     // 사칙 연산 생성자
     public ArithmeticCalculator() {
-        super();
+        super(); // Calculator 생성자 호출
+        this.add = new AddOperator();
+        this.sub = new SubtractOperator();
+        this.mul = new MultiplyOperator();
+        this.div = new DivideOperator();
     }
 
     // 사칙 연산 계산기
@@ -12,19 +23,16 @@ public class ArithmeticCalculator extends Calculator {
 
         switch (operator) {
             case '+': // 덧셈 연산
-                result = num1 + num2;
+                result = add.operate(num1, num2);
                 break;
             case '-': // 뺄셈 연산
-                result = num1 - num2;
+                result = sub.operate(num1, num2);
                 break;
             case '*': // 곱셈 연산
-                result = num1 * num2;
+                result = mul.operate(num1, num2);
                 break;
             case '/': // 나눗셈 연산
-                if (num2 == 0) { // 나눗셈에서 0으로 나누는 경우 예외 처리
-                    throw new DivideByZeroException("나눗셈 연산에서 분모에 0이 입력될 수 없습니다.");
-                }
-                result = num1 / num2;
+                result = div.operate(num1, num2);
                 break;
             default: // 잘못된 연산 기호를 입력했을 때 예외 처리
                 throw new InvalidOperatorException("잘못된 연산 기호입니다.");
