@@ -52,4 +52,13 @@ public class Calculator {
             System.out.println("리스트가 비어 있습니다."); // 안내문 출력
         }
     }
+
+    // 저장된 연산 결과를 조회하는 메서드 구현
+    public void inquiryResults() {
+        System.out.print("저장된 연산 결과: ");
+        for (int number : resultList) { // 향상된 for문 사용하여 연산 결과 출력
+            System.out.print(number + " ");
+        }
+        System.out.println();
+    }
 }

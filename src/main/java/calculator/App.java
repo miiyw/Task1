@@ -56,6 +56,13 @@ public class App {
                 calc.removeResult();
             }
 
+            // 저장된 연산 결과 전부 출력
+            System.out.println("저장된 연산 결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String input_result = sc.next();
+            if (input_result.trim().equals("inquiry")) {
+                calc.inquiryResults();
+            }
+
             // 반복 여부 확인
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String input_continue = sc.next();
