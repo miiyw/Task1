@@ -41,4 +41,15 @@ public class Calculator {
         resultList.add(result); // 결과 저장
         return result; // 결괏값 반환
     }
+
+    // 연산 결과 중 가장 먼저 저장된 데이터 삭제하는 메서드 구현
+    public void removeResult() {
+        if (!resultList.isEmpty()) {
+            resultList.remove(0);
+            System.out.println("삭제 후 현재 저장된 결과: " + resultList);
+        }
+        else { // 만약 리스트에 연산 결과가 없다면
+            System.out.println("리스트가 비어 있습니다."); // 안내문 출력
+        }
+    }
 }

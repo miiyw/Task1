@@ -12,7 +12,6 @@ public class App {
             try {
                 int num1;
 
-                // ‼️양의 정수를 입력받으라는 조건을 지금 확인하여 해당 조건 추가함
                 while (true) {
                     System.out.print("첫 번째 숫자를 입력하세요: ");
                     num1 = sc.nextInt();
@@ -48,6 +47,13 @@ public class App {
             if (input_reset.trim().equals("reset")) {
                 calc.setResultList(new  ArrayList<>());
                 System.out.println("리스트가 초기화되었습니다." + calc.getResultList() + "\n");
+            }
+
+            // 가장 먼저 저장된 데이터 삭제 메서드
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String input_remove = sc.next();
+            if (input_remove.trim().equals("remove")) {
+                calc.removeResult();
             }
 
             // 반복 여부 확인
