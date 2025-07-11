@@ -6,7 +6,9 @@ public class App {
     public static void main(String[] args) throws InvalidOperatorException, DivideByZeroException {
         Scanner sc = new Scanner(System.in);
 
-        Calculator calc = new Calculator(); // Calculator 인스턴스 생성
+        // Calculator 인스턴스 생성
+        List<Integer> paramList = new ArrayList<>();
+        Calculator calc = new Calculator(paramList);
 
         while(true){
             try {
