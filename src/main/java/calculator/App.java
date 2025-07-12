@@ -3,7 +3,7 @@ package calculator;
 import java.util.*;
 
 public class App {
-    public static void main(String[] args) throws InvalidOperatorException, DivideByZeroException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         ArithmeticCalculator ac = new ArithmeticCalculator(); // 사칙 연산 객체
@@ -15,37 +15,28 @@ public class App {
             int input = sc.nextInt();
             if (input == 1) {
                 while (true){
-                    try {
-                        double num1;
+                    double num1;
 
-                        while (true) {
-                            System.out.print("첫 번째 숫자를 입력하세요: ");
-                            num1 = sc.nextDouble();
-                            if (num1 >= 0) break; // 양수만 입력받기 위한 조건
-                            System.out.println("음수는 입력할 수 없습니다.");
-                        }
-
-                        double num2;
-                        while (true) {
-                            System.out.print("두 번째 숫자를 입력하세요: ");
-                            num2 = sc.nextDouble();
-                            if (num2 >= 0) break; // 양수만 입력받기 위한 조건
-                            System.out.println("음수는 입력할 수 없습니다.");
-                        }
-
-                        System.out.print("사칙 연산 기호를 입력하세요: ");
-                        char operator = sc.next().charAt(0);
-
-                        double result = ac.calculate(num1, num2, operator);
-                        System.out.println("결과: " + result + "\n");
-
-                        // Getter 메서드 활용 - 연산 저장 결과 확인
-                        System.out.println("연산 저장 결과: " + ac.getResultList() + "\n");
-
-                    } catch (DivideByZeroException | InvalidOperatorException e) { // 콘솔에 예외 처리 메시지 출력할 수 있도록 처리
-                        System.out.println("! 예외 발생: " + e.getMessage() + "\n");
-                        continue; // 예외 발생 시 처음으로 다시 입력받기
+                    while (true) {
+                        System.out.print("첫 번째 숫자를 입력하세요: ");
+                        num1 = sc.nextDouble();
+                        if (num1 >= 0) break; // 양수만 입력받기 위한 조건
+                        System.out.println("음수는 입력할 수 없습니다.");
                     }
+
+                    double num2;
+                    while (true) {
+                        System.out.print("두 번째 숫자를 입력하세요: ");
+                        num2 = sc.nextDouble();
+                        if (num2 >= 0) break; // 양수만 입력받기 위한 조건
+                        System.out.println("음수는 입력할 수 없습니다.");
+                    }
+
+                    double result = ac.calculate(num1, num2);
+                    System.out.println("결과: " + result + "\n");
+
+                    // Getter 메서드 활용 - 연산 저장 결과 확인
+                    System.out.println("연산 저장 결과: " + ac.getResultList() + "\n");
 
                     // Setter 활용 - 리스트 초기화 여부 확인
                     System.out.println("연산 결과가 저장된 리스트를 초기화하시겠습니까? (reset 입력 시 초기화)");
